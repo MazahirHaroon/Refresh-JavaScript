@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To Do</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <h1 class="main-heading">To Do App</h1>
+                <button class="button primary-button">Add To Do</button>
+            </nav>
+        </header>
+        <main>
+            <form id="add-todo-form" class="add-todo-form">
+                <div class="input-container">
+                    <label>Title*</label>
+                    <input id="todo-title" type="text" placeholder="Add your todo" name="todo-title" required>
+                </div>
+                <div class="input-container">
+                    <label>Date*</label>
+                    <input id="todo-date" type="date" name="todo-date" required>
+                </div>
+                <div class="input-container">
+                    <label>Time*</label>
+                    <input id="todo-time" type="time" name="todo-time" required>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="button secondary-button">Cancel</button>
+                    <button type="submit" class="button primary-button">Add To Do</button>
+                </div>
+
+            </form>
+            <section id="todo-list" class="todo-list"></section>
+
+        </main>
+        <script src="script.js"></script>
+    </body>
+
+</html>

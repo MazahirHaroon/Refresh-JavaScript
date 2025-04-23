@@ -1,0 +1,115 @@
+:root {
+  --body-font-size: 1.13rem;
+  --primary-heading-font-size: 2.19rem;
+  --secondary-heading-font-size: 1.9rem;
+  --tertiary-heading-font-size: 1.5rem;
+  --minor-font-size: 0.9rem;
+  --primary-color: #b2ad7f;
+  --secondary-color: #5f6771;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+  padding: 1em;
+}
+
+.main-heading {
+  font-size: var(--primary-heading-font-size);
+  color: var(--primary-color);
+  padding: 1em;
+  text-align: center;
+}
+
+nav {
+  position: relative;
+}
+
+nav .button {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.add-todo-form {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  /* border: solid red; */
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  /* border: solid green; */
+}
+
+.form-buttons {
+  display: flex;
+  align-items: flex-end;
+}
+
+input:invalid {
+  border: 1px solid red;
+}
+
+input:valid {
+  border: 2px solid black;
+}
+
+.button {
+  padding: 0.3em 0.5em;
+  font-size: var(--minor-font-size);
+  border-radius: 0.6rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.primary-button {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.secondary-button {
+  background-color: transparent;
+  color: var(--primary-color);
+}
+
+.todo-list {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.todo-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+  margin: 1em;
+  padding: 1em 2em;
+  border-radius: 0.6rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.todo-title {
+  font-size: var(--tertiary-heading-font-size);
+  color: var(--secondary-color);
+}
+
+.todo-date-time {
+  display: flex;
+  gap: 1em;
+  font-size: var(--minor-font-size);
+}
+
+.todo-controls {
+  display: flex;
+  gap: 0.5em;
+}

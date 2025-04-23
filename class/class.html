@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <style>
+            .menu-item {
+                display: inline-block;
+                padding: 8px 12px;
+                margin: 0 4px;
+                border: 1px solid #ccc;
+                cursor: pointer;
+                transition: background 0.2s;
+            }
+        </style>
+    </head>
+
+    <body>
+        <nav>
+            <span class="menu-item">Home</span>
+            <span class="menu-item">About</span>
+            <span class="menu-item">Services</span>
+            <span class="menu-item">Contact</span>
+        </nav>
+
+        <script>
+            // Constructor + prototype version
+            function Rectangle(width, height) {
+                this.width = width;
+                this.height = height;
+            }
+
+            // instance methods
+            Rectangle.prototype.area = function () {
+                return this.width * this.height;
+            };
+
+            Rectangle.prototype.perimeter = function () {
+                return 2 * (this.width + this.height);
+            };
+
+            // “static” factory method
+            Rectangle.createSquare = function (size) {
+                return new Rectangle(size, size);
+            };
+            /*
+            move area and perimeter into instance methods.
+
+            Convert createSquare into a static method on your class.
+
+            Bonus: add a get diagonal() that returns the rectangle’s diagonal (√(w²+h²)).
+
+            Test: instantiate
+            */
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Virtualized Tweet List</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+
+            /* The scrolling container */
+            #container {
+                position: relative;
+                height: 300px;
+                /* Fixed height makes it scrollable */
+                overflow-y: scroll;
+                border: 1px solid #ccc;
+                margin: 20px auto;
+                width: 300px;
+            }
+
+            /* Styling for a tweet element */
+            .tweet {
+                position: absolute;
+                left: 0;
+                right: 0;
+                padding: 10px;
+                margin: 5px;
+                background: #fff;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                font-size: 14px;
+                height: 50px;
+                /* Fixed height for each tweet */
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Virtualized Tweet List</h1>
+        <div id="container"></div>
+
+        <script>
+            // Simulate an array of 100 tweets
+            const tweets = Array.from({ length: 100 }, (_, index) => ({
+                id: index,
+                text: `Tweet number ${index + 1}`
+            }));
+
+            const container = document.getElementById('container');
+            const tweetHeight = 50; // Each tweet is 50px tall
+            const totalTweets = tweets.length;
+
+            // Create a spacer to mimic the total height of the list
+            const spacer = document.createElement('div');
+            spacer.style.height = `${totalTweets * tweetHeight}px`;
+            container.appendChild(spacer);
+
+            // Determine how many tweet elements we want visible plus a small buffer
+            // const visibleCount = Math.ceil(container.clientHeight / tweetHeight) + 2;
+            const visibleCount = tweets.length - 1;
+            const pool = [];
+
+            // Create a pool of DOM elements that will be re-used
+            for (let i = 0; i < visibleCount; i++) {
+                const tweetElem = document.createElement('div');
+                tweetElem.className = 'tweet';
+                container.appendChild(tweetElem);
+                pool.push(tweetElem);
+            }
+
+            // The render function updates the pool elements based on scroll
+            function render() {
+                const scrollTop = container.scrollTop;
+                // Determine the starting index based on the scroll position
+                const startIndex = Math.floor(scrollTop / tweetHeight);
+                // Adjust the top offset to position the pool correctly
+                pool.forEach((tweetElem, i) => {
+                    const tweetIndex = startIndex + i;
+                    if (tweetIndex < totalTweets) {
+                        tweetElem.style.display = 'block';
+                        tweetElem.style.top = (tweetIndex * tweetHeight) + 'px';
+                        tweetElem.textContent = tweets[tweetIndex].text;
+                    } else {
+                        tweetElem.style.display = 'none';
+                    }
+                });
+            }
+
+            // Trigger rendering on scroll
+            container.addEventListener('scroll', render);
+            // Initial render
+            render();
+        </script>
+    </body>
+
+</html>
